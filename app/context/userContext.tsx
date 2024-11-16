@@ -3,6 +3,7 @@
 import React, { createContext, useContext , useState } from "react";
 import { collection, addDoc, onSnapshot, query, serverTimestamp, orderBy } from "firebase/firestore";
 import { db } from "../firebase/config";
+import { toast } from "react-toastify";
 
 type UserData = {
     id: string; 
@@ -49,8 +50,9 @@ const UserProvider = ({children}: Props) => {
                 ...data,
                 createdAt: serverTimestamp()
             });
-            // console.log(docRef);
+            toast.success("Form Submitted Successfully");
         } catch (error) {
+            toast.error("Error in submitting the form");
             console.log(error);
         }
         setIsLoading(false);
