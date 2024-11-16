@@ -45,7 +45,7 @@ const UserProvider = ({children}: Props) => {
         setIsLoading(true);
 
         try {
-            const docRef = await addDoc(collection(db, "userform"), {
+            await addDoc(collection(db, "userform"), {
                 ...data,
                 createdAt: serverTimestamp()
             });
