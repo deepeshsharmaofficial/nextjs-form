@@ -1,7 +1,7 @@
 "use client"
 
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { collection, addDoc, doc, onSnapshot, query, where } from "firebase/firestore";
+import React, { createContext, useContext , useState } from "react";
+import { collection, addDoc, onSnapshot, query } from "firebase/firestore";
 import { db } from "../firebase/config";
 
 type UserData = {

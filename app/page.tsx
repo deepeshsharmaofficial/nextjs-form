@@ -10,14 +10,6 @@ const Home = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
-  const [loading, setLoading] = useState(false);
-
-  const [userData, setUserData] = useState([
-    {name: "Deepesh", email: "deepesh@gmail.com", phone: "+918810477701", address: "Dwarka Sector 14, Delhi-110078" },
-    {name: "Rohan", email: "rohan@gmail.com", phone: "+916610433701", address: "Dwarka Sector 14, Delhi-110078" },
-    {name: "Mohan", email: "mohan@gmail.com", phone: "+917710400701", address: "Dwarka Sector 14, Delhi-110078" },
-    {name: "Sohan", email: "sohan@gmail.com", phone: "+919910411701", address: "Dwarka Sector 14, Delhi-110078" },
-  ]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
