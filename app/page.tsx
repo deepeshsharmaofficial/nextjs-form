@@ -53,7 +53,7 @@ const Home = () => {
             <textarea value={address} onChange={(e)=> setAddress(e.target.value)} name="address" id="address" className="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="" rows={4} required />
           </div>
 
-          <button type="submit" className="text-white bg-blue-700 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+          <button type="submit" disabled={isLoading} className="text-white bg-blue-700 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
             
             {isLoading ? (
                 <>

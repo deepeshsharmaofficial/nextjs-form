@@ -1,7 +1,7 @@
 "use client"
 
 import React, { createContext, useContext , useState } from "react";
-import { collection, addDoc, onSnapshot, query } from "firebase/firestore";
+import { collection, addDoc, onSnapshot, query, serverTimestamp, orderBy } from "firebase/firestore";
 import { db } from "../firebase/config";
 
 type UserData = {
@@ -45,8 +45,11 @@ const UserProvider = ({children}: Props) => {
         setIsLoading(true);
 
         try {
-            const docRef = await addDoc(collection(db, "userform"), data);
-            console.log(docRef);
+            const docRef = await addDoc(collection(db, "userform"), {
+                ...data,
+                createdAt: serverTimestamp()
+            });
+            // console.log(docRef);
         } catch (error) {
             console.log(error);
         }
@@ -56,7 +59,9 @@ const UserProvider = ({children}: Props) => {
     // Fetch all user data from Firestore
     const getAllData = () => {
         try {
-            const q = query(collection(db, "userform"));
+            // Adjust 'createdAt' to the field storing your timestamps
+            const q = query(collection(db, "userform"), orderBy("createdAt", "desc"));
+            
             const unsubscribe = onSnapshot(q, (querySnapshot) => {
                 const userData: UserData[] = [];
                 querySnapshot.forEach((doc) => {
